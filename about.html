@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web Porto Shikimorenn</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+      }
+
+      body {
+        background: #0b1120;
+      }
+
+      .header {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 10%;
+        background: transparent;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        position: relative;
+        font-size: 25px;
+        color: #ededed;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .logo::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: #0b1120;
+        animation: showRight 1s ease forwards;
+        animation-delay: 0.1s;
+      }
+      @keyframes showRight {
+        100% {
+          width: 0;
+        }
+      }
+
+      .navbar {
+        display: flex;
+      }
+      .navbar a {
+        font-size: 20px;
+        color: #ededed;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 35px;
+        transition: 0.3s;
+      }
+      .navbar a:hover,
+      .navbar a.active {
+        color: #00abf0;
+      }
+
+      .hamburger {
+        display: none;
+        font-size: 28px;
+        color: #ededed;
+        cursor: pointer;
+      }
+
+      /* ===== CARD / HERO =====
+         NOTE: .home adalah kotak (card) yang memuat image + teks.
+      */
+      .home {
+        display: flex;
+        /* Ubah: gunakan center agar image dan teks sejajar vertikal */
+        align-items: center;
+        gap: 1rem;
+        padding: 2.5rem;
+        border: 2px solid #2f5570;
+        background-color: #0f172a;
+        border-radius: 0.75rem;
+        max-width: 72rem;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* wrapper lingkaran image */
+      .hero-image {
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        border: 2px solid #00abf0;
+        overflow: hidden;
+
+        /* pusatkan elemen <img> di dalamnya */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .hero-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: #081b29;
+        animation: showRight 1s ease forwards;
+        animation-delay: 0.2s;
+      }
+
+      /* pastikan gambar tidak gepeng dan terfokus di tengah */
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        display: block;
+      }
+
+      .hero-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 10px 20px;
+      }
+      .hero-content h2 {
+        font-size: 24px;
+        display: inline-block;
+        line-height: 32px;
+        margin-bottom: 15px;
+        border-bottom-width: 5px;
+        border-color: yellow;
+      }
+      .hero-content h2::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: #081b29;
+        animation: showRight 1s ease forwards;
+        animation-delay: 0.1s;
+      }
+      .hero-content p {
+        font-size: 20px;
+        text-align: justify;
+      }
+      .hero-content p::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: #081b29;
+        animation: showRight 1s ease forwards;
+        animation-delay: 0.3s;
+      }
+
+      #tech-skill {
+        width: 80%;
+        margin: 25px auto;
+      }
+      #tech-skill h2 {
+        font-size: 25px;
+        font-weight: 600;
+        margin-bottom: 25px;
+        display: inline-block;
+        border-bottom: 2px solid #2f5570;
+      }
+      #tech-skill::before {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: #081b29;
+        animation: showRight 1s ease forwards;
+        animation-delay: 0.3s;
+      }
+      .skills-container {
+        display: flex;
+        gap: 1rem;
+        white-space: nowrap;
+      }
+      .skill-card {
+        display: inline-flex;
+        align-items: center;
+        min-width: 120px;
+        border: 1px solid #4b5563;
+        border-radius: 6px;
+        padding: 0.5rem 1rem;
+        transition: background-color 0.3s;
+      }
+      .skill-card:hover {
+        background-color: #1f2937;
+      }
+      .skill-card img {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+      }
+
+      /* ---------------- MOBILE (sudah sesuai) ---------------- */
+      @media only screen and (max-width: 600px) {
+        .home {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          height: auto;
+        }
+        .hero-image {
+          order: -1;
+          width: 70%;
+          max-width: 250px;
+          height: auto;
+          aspect-ratio: 1 / 1;
+          margin: 0 auto 20px;
+        }
+        .hero-content h2 {
+          font-size: 20px;
+        }
+        .hero-content p {
+          font-size: 20px;
+        }
+        .navbar {
+          position: fixed;
+          top: 70px;
+          right: -100%;
+          width: 200px;
+          background: #081b29;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          transition: 0.3s;
+        }
+        .navbar a {
+          margin: 15px 0;
+        }
+        .navbar.active {
+          right: 0;
+        }
+        .hamburger {
+          display: block;
+        }
+      }
+
+      /* ---------------- TABLET (601 - 991) ----------------
+         Gambar & teks sejajar, gambar vertical center (sesuai permintaan).
+      */
+      @media only screen and (min-width: 601px) and (max-width: 991px) {
+        .home {
+          flex-direction: row;
+          align-items: center; /* CENTER agar gambar berada di garis tengah */
+          text-align: left;
+          padding: 2rem;
+        }
+
+        .hero-image {
+          width: 35%;
+          max-width: 380px;
+          height: auto;
+          aspect-ratio: 1 / 1;
+          margin: 0 30px 0 0;
+        }
+
+        .hero-content {
+          flex: 1;
+          max-width: 550px;
+        }
+
+        .hero-content h2 {
+          font-size: 36px;
+        }
+
+        .hero-content p {
+          font-size: 22px;
+        }
+
+        .navbar {
+          position: static;
+          flex-direction: row;
+          background: transparent;
+        }
+        .hamburger {
+          display: none;
+        }
+      }
+
+      /* ---------------- LAPTOP (992 - 1199) ---------------- */
+      @media only screen and (min-width: 992px) and (max-width: 1199px) {
+        .home {
+          flex-direction: row;
+          align-items: center; /* ubah jadi center supaya gambar sejajar tengah */
+          gap: 2rem;
+          padding: 3rem;
+        }
+
+        .hero-image {
+          width: 280px;
+          height: 280px;
+          border-radius: 50%;
+          border: 2px solid #00abf0;
+          flex-shrink: 0;
+        }
+
+        .hero-content {
+          flex: 1;
+          max-width: 650px;
+        }
+
+        .hero-content h2 {
+          font-size: 42px;
+        }
+
+        .hero-content p {
+          font-size: 22px;
+        }
+
+        #tech-skill {
+          width: 75%;
+        }
+      }
+
+      /* ---------------- DESKTOP BESAR (>=1200) ---------------- */
+      @media only screen and (min-width: 1200px) {
+        .home {
+          flex-direction: row;
+          align-items: center; /* center juga untuk desktop besar */
+          gap: 3rem;
+          padding: 4rem;
+        }
+
+        .hero-image {
+          width: 320px;
+          height: 320px;
+          border-radius: 50%;
+          border: 2px solid #00abf0;
+          flex-shrink: 0;
+        }
+
+        .hero-content {
+          flex: 1;
+          max-width: 720px;
+        }
+
+        .hero-content h2 {
+          font-size: 48px;
+        }
+
+        .hero-content p {
+          font-size: 24px;
+        }
+
+        #tech-skill {
+          width: 70%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Shikimorenn</a>
+      <nav class="navbar">
+        <a href="porto.html">Home</a>
+        <a href="#" class="active">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </header>
+
+    <section class="home">
+      <div class="hero-image">
+        <img src="img1.jpg" alt="profile" />
+      </div>
+
+      <div class="hero-content">
+        <h2><span style="color: #00abf0">About</span> Me</h2>
+        <p>
+          Hello everyone! My name is
+          <span style="color: #00abf0">Muhammad Alfindra Rahman</span>, and I'm
+          a web developer based in Depok, West Java. Although I'm still at the
+          beginning of my journey and don’t have much experience yet, I truly
+          enjoy learning and building things on the web. Every small progress I
+          make keeps me excited and motivated to improve.<br /><br />
+          In the past, I worked as a Mobile Legends game booster, but I realized
+          that I wanted to pursue a more sustainable and impactful career.
+          That’s when I discovered web development, especially Front-End
+          development, and it immediately caught my interest. I believe that
+          stepping out of our comfort zone is essential for growth, and this
+          transition is my way of doing just that. Now, I spend my time learning
+          new technologies, building personal projects, and continuously pushing
+          myself to become a better developer. I’m looking forward to
+          collaborating, learning from others, and contributing to meaningful
+          projects in the tech community.
+        </p>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="tech-skill">
+      <h2>Skills</h2>
+      <marquee behavior="scroll" direction="right" scrollamount="10">
+        <div class="skills-container">
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+              alt="HTML"
+            />
+            <span>HTML</span>
+          </div>
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              alt="CSS"
+            />
+            <span>CSS</span>
+          </div>
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JavaScript"
+            />
+            <span>JavaScript</span>
+          </div>
+          <div class="skill-card">
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+              alt="Tailwind"
+            />
+            <span>Tailwind</span>
+          </div>
+        </div>
+      </marquee>
+    </section>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navbar = document.querySelector(".navbar");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>

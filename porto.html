@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Porto Shikimorenn</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* ===== GLOBAL ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+      }
+      body {
+        background: #081b29;
+      }
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 20px 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        background: transparent;
+      }
+      .logo {
+        font-size: 25px;
+        color: #ededed;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .navbar {
+        display: flex;
+      }
+      .navbar a {
+        font-size: 20px;
+        color: #ededed;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 35px;
+        transition: 0.3s;
+      }
+      .navbar a:hover,
+      .navbar a.active {
+        color: #00abf0;
+      }
+      .hamburger {
+        display: none;
+        font-size: 28px;
+        color: #ededed;
+        cursor: pointer;
+      }
+
+      /* ===== HERO SECTION ===== */
+      .home {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        height: 100vh;
+        padding: 0 10%;
+      }
+      .hero-image {
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #00abf0;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .hero-content {
+        max-width: 600px;
+      }
+      .hero-content h1 {
+        font-weight: 700;
+        line-height: 1.2;
+      }
+      .hero-content h3 {
+        font-weight: 700;
+        color: #00abf0;
+      }
+      .hero-content p {
+        font-size: 16px;
+        margin: 20px 0 40px;
+      }
+      .btn-box {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        height: 50px;
+      }
+      .btn-box a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.5s;
+      }
+      .btn-box a:first-child {
+        background: #00abf0;
+        border: 2px solid #00abf0;
+        color: #081b29;
+      }
+      .btn-box a:first-child:hover {
+        background: transparent;
+        color: #00abf0;
+      }
+      .btn-box a:nth-child(2) {
+        background: transparent;
+        border: 2px solid #00abf0;
+        color: #00abf0;
+      }
+      .btn-box a:nth-child(2):hover {
+        background: #00abf0;
+        color: #081b29;
+      }
+      .home-sci {
+        margin-top: 30px;
+
+        display: flex;
+        justify-content: space-evenly;
+        width: 210px;
+      }
+      .home-sci a {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        border: 2px solid #00abf0;
+        border-radius: 50%;
+        font-size: 20px;
+        color: #00abf0;
+        text-decoration: none;
+        transition: 0.5s;
+      }
+      .home-sci a:hover {
+        background: #00abf0;
+        color: #081b29;
+      }
+
+      /* ===== MOBILE (max 600px) ===== */
+      @media only screen and (max-width: 600px) {
+        .home {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 120px;
+          height: auto;
+        }
+        .hero-image {
+          order: -1;
+          width: 70%;
+          max-width: 250px;
+          height: auto;
+          aspect-ratio: 1 / 1;
+          margin: 0 auto 20px;
+        }
+        .hero-content h1 {
+          font-size: 28px;
+        }
+        .hero-content h3 {
+          font-size: 18px;
+        }
+        .btn-box {
+          flex-direction: row;
+          justify-content: center;
+          gap: 15px;
+          width: 100%;
+        }
+        .btn-box a {
+          width: 130px;
+          height: 45px;
+          font-size: 15px;
+        }
+        .navbar {
+          position: fixed;
+          top: 70px;
+          right: -100%;
+          width: 200px;
+          background: #081b29;
+          flex-direction: column;
+          align-items: center;
+          padding: 20px;
+          transition: 0.3s;
+        }
+        .navbar a {
+          margin: 15px 0;
+        }
+        .navbar.active {
+          right: 0;
+        }
+        .hamburger {
+          display: block;
+        }
+      }
+
+      /* ===== TABLET (min 601px) ===== */
+      @media only screen and (min-width: 601px) {
+        .home {
+          flex-direction: row;
+          flex-wrap: nowrap;
+          text-align: left;
+          height: 100vh;
+          padding-top: 0;
+        }
+        .hero-image {
+          order: 0;
+          width: 35%; /* foto sedikit lebih besar */
+          max-width: 400px; /* batas maksimal */
+          height: auto;
+          aspect-ratio: 1 / 1;
+          margin: 0 40px 0 0;
+        }
+        .hero-content {
+          flex: 1;
+          max-width: 550px; /* teks lebih sempit */
+        }
+        .hero-content h1 {
+          font-size: 40px;
+        }
+        .hero-content h3 {
+          font-size: 24px;
+        }
+        .btn-box a {
+          width: 140px;
+          height: 45px;
+          font-size: 16px;
+        }
+        .hamburger {
+          display: none;
+        }
+        .navbar {
+          position: static;
+          flex-direction: row;
+          background: transparent;
+          width: auto;
+          height: auto;
+          padding: 0;
+        }
+      }
+
+      /* ===== LAPTOP (min 992px) ===== */
+      @media only screen and (min-width: 992px) {
+        .hero-image {
+          width: 420px;
+          max-width: 40%;
+          height: auto;
+          aspect-ratio: 1 / 1;
+        }
+        .hero-content h1 {
+          font-size: 48px;
+        }
+        .hero-content h3 {
+          font-size: 28px;
+        }
+        .btn-box a {
+          width: 160px;
+          height: 50px;
+          font-size: 18px;
+        }
+      }
+
+      /* ===== DESKTOP BESAR (min 1200px) ===== */
+      @media only screen and (min-width: 1200px) {
+        .hero-image {
+          width: 500px;
+          max-width: 35%;
+          height: auto;
+          aspect-ratio: 1 / 1;
+        }
+        .hero-content h1 {
+          font-size: 56px;
+        }
+        .hero-content h3 {
+          font-size: 32px;
+        }
+        .btn-box a {
+          width: 170px;
+          height: 55px;
+          font-size: 19px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">Shikimorenn</a>
+      <nav class="navbar">
+        <a href="#" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="experience.html">Experience</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </header>
+
+    <section class="home">
+      <div class="hero-image">
+        <img src="img1.jpg" alt="profile" />
+      </div>
+      <div class="hero-content">
+        <h1>Hi, I'm Muhammad Alfindra Rahman</h1>
+        <h3>Frontend Developer</h3>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla quas
+          autem iste fugiat maiores eligendi commodi porro, eveniet aspernatur
+          aperiam cumque laboriosam repellendus animi laudantium, nemo modi
+          placeat, numquam earum!
+        </p>
+        <div class="btn-box">
+          <a href="#">Hire Me</a>
+          <a href="#">Let's Talk</a>
+        </div>
+        <div class="home-sci">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-threads"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const navbar = document.querySelector(".navbar");
+
+      hamburger.addEventListener("click", () => {
+        navbar.classList.toggle("active");
+      });
+    </script>
+  </body>
+</html>
